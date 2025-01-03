@@ -9,6 +9,7 @@
         }
     ],
     "description": "A scaffold for creating a Symfony-based web project using Nginx as a web server and Mysql database",
+    "version": "1.0.0",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
