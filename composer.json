@@ -1,6 +1,16 @@
 {
+    "name": "a-bakautov/symfony-nginx-docker",
+    "authors": [
+        {
+            "name": "Alexandr Bakautov",
+            "email": "bakautov.alexandr@yandex.ru",
+            "homepage": "https://github.com/a-bakautov",
+            "role": "Developer"
+        }
+    ],
+    "description": "A scaffold for creating a Symfony-based web project using Nginx as a web server and Mysql database",
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
