@@ -1,0 +1,47 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sf-ng_app
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+    networks:
+      - sf-ng
+
+  web:
+    image: nginx:1.27
+    container_name: sf-ng_web
+    restart: unless-stopped
+    ports:
+      - ${FORWARD_APP_PORT:-80}:80
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - sf-ng
+
+  db:
+    image: mysql:8
+    container_name: sf-ng_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-password}
+      MYSQL_DATABASE: ${DB_DATABASE:-db_name}
+      MYSQL_USER: ${DB_USER:-db_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
+    volumes:
+      - sf-ng_data:/var/lib/mysql
+    ports:
+      - ${FORWARD_DB_PORT:-3306}:3306
+    networks:
+      - sf-ng
+
+networks:
+  sf-ng:
+    driver: bridge
+
+volumes:
+  sf-ng_data:
