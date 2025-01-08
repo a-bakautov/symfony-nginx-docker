@@ -6,7 +6,7 @@ services:
     container_name: sf-ng_app
     restart: unless-stopped
     volumes:
-      - .:/var/www/html
+      - .:/var/www
     networks:
       - sf-ng
 

@@ -1,6 +1,6 @@
 FROM php:8.4-fpm-alpine
 
-ENV APP_HOME /var/www/html
+ENV APP_HOME /var/www
 ENV USERNAME=www-data
 
 # Install system dependencies
